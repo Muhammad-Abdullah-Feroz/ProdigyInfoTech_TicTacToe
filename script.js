@@ -12,11 +12,13 @@ var wins = [
 
 var boxtext = Array.from(document.querySelectorAll(".box .boxtext"))
 var boxes = document.querySelectorAll(".box")
+var info = document.querySelector(".info-container")
 var turn = 'X'
 var win = false
 
 const gameWon = ()=>{
-    
+    info.style.display = "flex"
+    info.querySelector("span").innerHTML = `Player ${turn} won the game....`
 }
 
 const checkWin = ()=>{
@@ -31,6 +33,7 @@ const checkWin = ()=>{
     if (win){
         Array.from(boxes).forEach((e)=>{
             e.removeEventListener("click",changeTurn())
+            gameWon()
         })
     }
 }
@@ -46,10 +49,12 @@ const changeTurn = ()=>{
 Array.from(boxes).forEach((e,i)=>{
     e.addEventListener("click",()=>{
         console.log(e);
-        boxtext[i].innerHTML = turn
-        console.log(boxtext[i].innerHTML);
-        changeTurn()
-        checkWin()
+        if(boxtext[i].innerHTML == ''){
+            boxtext[i].innerHTML = turn
+            console.log(boxtext[i].innerHTML);
+            changeTurn()
+            checkWin()
+        }
     })
 })
 // console.log(boxes);

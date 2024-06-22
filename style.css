@@ -42,3 +42,18 @@
     background-color: rgb(41, 41, 41);
     font-size: 6rem;
 }
+.info-container{
+    position: absolute;
+    top:10%;
+    background-color: rgba(255, 255, 255, 0.295);
+    height: 80%;
+    aspect-ratio: 1/1;
+    display: none;
+    color: aquamarine;
+    -webkit-text-stroke: 3px green;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2rem;
+    display: none;
+}
