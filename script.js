@@ -21,6 +21,25 @@ const gameWon = ()=>{
     info.querySelector("span").innerHTML = `Player ${turn} won the game....`
 }
 
+const gameDraw = ()=>{
+    info.innerHTML = "<h1>Draw!!!</h1>"
+    info.style.display = "flex"
+}
+
+const checkDraw = ()=>{
+    let draw = false;
+    if (win == false){
+        draw = true;
+        for (const text of boxtext) {
+            if (text.innerHTML == '' ){
+                draw = false;
+                break;
+            }
+        }
+    }
+    return draw;
+}
+
 const checkWin = ()=>{
     for (const chance of wins) {
         // console.log(boxtext[chance[0]].innerHTML,boxtext[chance[1]].innerHTML,boxtext[chance[2]].innerHTML);
@@ -53,6 +72,9 @@ Array.from(boxes).forEach((e,i)=>{
             boxtext[i].innerHTML = turn
             console.log(boxtext[i].innerHTML);
             changeTurn()
+            if(checkDraw()){
+                gameDraw()
+            }
             checkWin()
         }
     })
